@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REM – Todo Limpio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --verde-oscuro:#1F6B2E;
+  --verde-medio:#2E8E3E;
+  --gris-texto:#6A6A6A;
+  --blanco:#FFFFFF;
+  --negro:#000000;
+  --fuente:'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html, body{font-family:var(--fuente);background:var(--blanco);color:var(--negro);overflow-x:hidden;}
+
+/* HEADER */
+header {
+    width: 100%;
+    padding:15px 30px;
+    background: var(--blanco);
+    border-bottom: 1px solid #e3e3e3;
+    display: flex;
+    align-items: center;       
+    justify-content: space-between;
+    position: fixed; 
+    top: 0;
+    z-index: 9999;
+    height: 80px;              
+}
+header img {height:70px;width:auto;}
+nav {display:flex;gap:25px;align-items:center;}
+nav a{color:var(--negro);text-decoration:none;font-weight:500;font-size:16px;}
+nav a:hover{color:var(--verde-oscuro);}
+.btn-contacto{
+    background:var(--verde-oscuro);
+    color:var(--blanco);
+    padding:10px 20px;
+    border-radius:6px;
+    font-size:15px;
+    text-decoration:none;
+    font-weight:600;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s;
+    align-self:center;         
+}
+.btn-contacto.show{opacity:1;pointer-events:auto;}
+.hamburger{display:none;font-size:32px;cursor:pointer;align-self:center;}
+
+/* MOBILE MENU */
+.mobile-menu{
+    display:none;
+    flex-direction:column;
+    background:var(--blanco);
+    width:100%;
+    border-bottom:1px solid #e3e3e3;
+    position:fixed;
+    top:80px;
+    left:0;
+    z-index:1000;
+}
+.mobile-menu a{
+    padding:12px 25px;
+    text-decoration:none;
+    color: var(--negro);
+    font-size:18px;
+    border-bottom:1px solid #f1f1f1;
+}
+
+/* HERO */
+.hero{
+    width:100%;
+    height:75vh;
+    min-height:400px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    margin-top:0;
+}
+
+/* padding doar pe desktop */
+@media(min-width:1021px){
+    .hero {
+        padding-top:80px; /* header fix */
+    }
+}
+.hero video.bg-video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:1;}
+.hero .banner-text{position:absolute;top:15%;width:100%;white-space:nowrap;color:var(--blanco);font-size:20px;animation:scrollBanner 20s linear infinite;z-index:2;}
+@keyframes scrollBanner{0%{left:100%}100%{left:-100%}}
+.hero .contenido{position:relative;z-index:2;color:var(--blanco);max-width:900px;animation:fadeIn 2s;}
+.hero h1{font-size:48px;margin-bottom:15px;font-weight:700;text-shadow:0 0 8px rgba(0,0,0,0.5);}
+.hero p{font-size:20px;margin-bottom:25px;text-shadow:0 0 6px rgba(0,0,0,0.5);}
+.btn-hero{background:var(--verde-oscuro);color:var(--blanco);padding:14px 32px;border-radius:6px;text-decoration:none;font-size:18px;font-weight:600;}
+.btn-hero:hover{background:var(--verde-medio);}
+
+/* SECTIONS */
+.section{padding:80px 25px;text-align:center;}
+.section h2{font-size:34px;margin-bottom:20px;font-weight:700;}
+.section p{max-width:850px;margin:auto;font-size:18px;line-height:1.6;}
+
+/* GALERIE LOOP */
+.section#galeria{padding:0;margin:0;}
+.gallery-wrapper {
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding: 20px 0;
+}
+.gallery-loop{
+    display:flex;
+    gap:20px;
+    animation:loopScroll 30s linear infinite;
+}
+@keyframes loopScroll{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
+.gallery-loop img{
+    width:280px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:transform 0.3s, opacity 0.3s;
+    position: relative;
+    z-index:1;
+}
+.gallery-loop img:hover{
+    transform: scale(1.1);
+    z-index:1000;
+}
+
+/* MODAL */
+.modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;}
+.modal img{max-width:90%;max-height:80%;border-radius:8px;}
+.modal .close, .modal .prev, .modal .next{position:absolute;color:#fff;font-size:40px;font-weight:bold;cursor:pointer;user-select:none;}
+.modal .close {
+    top: calc(80px + 10px); /* 10px sub header */
+    right: 30px;
+}
+.modal .prev{left:20px;top:50%;transform:translateY(-50%);}
+.modal .next{right:20px;top:50%;transform:translateY(-50%);}
+
+/* MOBILE FIX MODAL CLOSE */
+@media(max-width: 780px){
+    .hero{margin-top:80px;}
+    .modal .close {top:100px;right:20px;}
+    .hero h1{font-size:34px;}
+    .hero p{font-size:17px;}
+}
+
+/* FOOTER */
+footer{background:#f3f3f3;padding:50px 20px;text-align:center;}
+footer p{color:var(--gris-texto);margin-bottom:15px;}
+footer a{color:var(--gris-texto);text-decoration:none;margin:0 12px;font-size:15px;}
+footer a:hover{color:var(--verde-oscuro);}
+.social-icons{margin-top:20px;}
+.social-icons a img{width:32px;margin:0 8px;transition:0.25s;}
+.social-icons a img:hover{transform:scale(1.15);}
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    z-index: 1500;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+    animation: bounce 2s infinite;
+}
+
+#scrollTopBtn:hover {
+    background: var(--verde-medio);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* RESPONSIVE */
+@media(max-width:1020px){
+    nav,.btn-contacto{display:none}
+    .hamburger{display:block}
+    header{
+        position: fixed;
+        top:0;
+        left:0;
+        width:100%;
+        z-index:9999;
+        background: var(--blanco);
+    }
+}
+@media(max-width:500px){header img{height:50px}}
+@media(max-width:600px){.gallery-loop img{width:calc((100vw - 60px)/5);}}
+@media(max-width:450px){.gallery-loop img{width:calc((100vw - 50px)/4);}}
+@media(max-width:350px){.gallery-loop img{width:calc((100vw - 40px)/3);}}
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+</style>
+
+<script>
+function toggleMenu(){
+    const menu=document.getElementById("mobileMenu");
+    menu.style.display=menu.style.display==="flex"?"none":"flex";
+}
+window.addEventListener("scroll",()=>{
+    document.querySelector(".btn-contacto").classList.toggle("show",window.scrollY>50);
+    const scrollBtn=document.getElementById("scrollTopBtn");
+    scrollBtn.style.display=window.scrollY>200?"block":"none";
+});
+
+// GALLERY MODAL
+let currentIndex=0;
+function openModal(index){currentIndex=index;showModal();}
+function showModal(){
+  const modal=document.getElementById("modal");
+  const modalImg=document.getElementById("modalImg");
+  const imgs=document.querySelectorAll(".gallery-loop img");
+  modal.style.display="flex";
+  modalImg.src=imgs[currentIndex].src;
+}
+function closeModal(){document.getElementById("modal").style.display="none";}
+function nextImg(){
+  const imgs=document.querySelectorAll(".gallery-loop img");
+  currentIndex=(currentIndex+1)%imgs.length;
+  document.getElementById("modalImg").src=imgs[currentIndex].src;
+}
+function prevImg(){
+  const imgs=document.querySelectorAll(".gallery-loop img");
+  currentIndex=(currentIndex-1+imgs.length)%imgs.length;
+  document.getElementById("modalImg").src=imgs[currentIndex].src;
+}
+
+// SCROLL TO TOP
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+// CLOSE MODAL WITH ESC
+document.addEventListener('keydown', function(e){
+    if(e.key === "Escape"){
+        closeModal();
+    }
+});
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.svg">
+</head>
+
+<body>
+<header>
+    <img src="assets/images/logo.svg" alt="REM Todo Limpio logo">
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#hogar">Hogar</a>
+        <a href="#jardin">Jardín</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn-contacto" href="#contacto">Contáctanos</a>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+    <a href="#hogar" onclick="toggleMenu()">Hogar</a>
+    <a href="#jardin" onclick="toggleMenu()">Jardín</a>
+    <a href="#galeria" onclick="toggleMenu()">Galería</a>
+    <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+</div>
+
+<section class="hero" id="inicio">
+    <video class="bg-video" autoplay muted loop src="assets/videos/bg-video.mp4"></video>
+    <div class="banner-text">R.E.M – Todo Limpio · Limpieza profesional Hogar y Jardín · Contacta ahora</div>
+    <div class="contenido">
+        <h1>R.E.M – Todo Limpio</h1>
+        <p>Profesionales en limpieza y mantenimiento de Hogar y Jardín. Garantía de calidad y atención personalizada.</p>
+        <a class="btn-hero" href="#contacto">Pedir Presupuesto</a>
+    </div>
+</section>
+
+<section class="section" id="hogar">
+    <h2>Servicios para Hogar</h2>
+    <p>Limpieza de portales, escaleras, cristalería, garajes y mantenimiento integral del hogar con equipos especializados y atención profesional.</p>
+</section>
+
+<section class="section" id="jardin">
+    <h2>Servicios para Jardín</h2>
+    <p>Cuidado de césped, poda de árboles y setos, instalación y mantenimiento de sistemas de riego, asegurando un jardín saludable y estético.</p>
+</section>
+
+<section class="section" id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery-wrapper">
+        <div class="gallery-loop">
+            <img src="assets/images/gallery/photo1.jpg" alt="Trabajo 1" onclick="openModal(0)">
+            <img src="assets/images/gallery/photo2.jpg" alt="Trabajo 2" onclick="openModal(1)">
+            <img src="assets/images/gallery/photo3.jpg" alt="Trabajo 3" onclick="openModal(2)">
+            <img src="assets/images/gallery/photo4.jpg" alt="Trabajo 4" onclick="openModal(3)">
+            <img src="assets/images/gallery/photo5.jpg" alt="Trabajo 5" onclick="openModal(4)">
+            <img src="assets/images/gallery/photo6.jpg" alt="Trabajo 6" onclick="openModal(5)">
+            <img src="assets/images/gallery/photo7.jpg" alt="Trabajo 7" onclick="openModal(6)">
+            <img src="assets/images/gallery/photo8.jpg" alt="Trabajo 8" onclick="openModal(7)">
+            <img src="assets/images/gallery/photo9.jpg" alt="Trabajo 9" onclick="openModal(8)">
+            <img src="assets/images/gallery/photo10.jpg" alt="Trabajo 10" onclick="openModal(9)">
+            <img src="assets/images/gallery/photo11.jpg" alt="Trabajo 11" onclick="openModal(10)">
+            <img src="assets/images/gallery/photo12.jpg" alt="Trabajo 12" onclick="openModal(11)">
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">×</span>
+    <span class="prev" onclick="prevImg()">‹</span>
+    <img id="modalImg" src="">
+    <span class="next" onclick="nextImg()">›</span>
+</div>
+
+<section class="section" id="contacto">
+    <h2>Contacto</h2>
+    <form action="https://formspree.io/f/xwvwzkpz" method="POST" style="max-width:500px;margin:auto;">
+        <input type="text" name="nombre" placeholder="Nombre" required style="width:100%;padding:10px;margin:10px 0;">
+        <input type="email" name="email" placeholder="Email" required style="width:100%;padding:10px;margin:10px 0;">
+        <input type="text" name="telefono" placeholder="Teléfono" style="width:100%;padding:10px;margin:10px 0;">
+        <textarea name="mensaje" placeholder="Mensaje" rows="4" style="width:100%;padding:10px;margin:10px 0;"></textarea>
+        <button type="submit" style="background:var(--verde-oscuro);color:var(--blanco);padding:12px 20px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">Enviar</button>
+    </form>
+</section>
+
+<footer>
+    <p>© REM. All rights reserved.</p>
+    <div>
+        <a href="pages/privacidad.html">Privacidad</a>
+        <a href="pages/terminos.html">Términos</a>
+        <a href="pages/faq.html">FAQ</a>
+    </div>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/remtodolimpio" target="_blank">
+            <img src="assets/images/socials/facebook.png" alt="Facebook">
+        </a>
+
+        <a href="https://wa.me/34662371631" target="_blank">
+            <img src="assets/images/socials/whatsapp.png" alt="WhatsApp">
+        </a>
+
+        <a href="https://www.instagram.com/remtodolimpio" target="_blank">
+            <img src="assets/images/socials/instagram.png" alt="Instagram">
+        </a>
+
+        <a href="https://www.tiktok.com" target="_blank">
+            <img src="assets/images/socials/tiktok.png" alt="TikTok">
+        </a>
+    </div>
+</footer>
+
+<button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preguntas Frecuentes – REM Todo Limpio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde-oscuro:#1F6B2E;
+  --verde-medio:#2E8E3E;
+  --gris-texto:#6A6A6A;
+  --blanco:#FFFFFF;
+  --negro:#000000;
+  --fuente:'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--fuente);background:var(--blanco);color:var(--negro);}
+header{width:100%;padding:15px 30px;background:var(--blanco);border-bottom:1px solid #e3e3e3;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:999;transition:all 0.3s;height:80px;}
+header img{height:70px;width:auto;}
+nav{display:flex;gap:25px;align-items:center;}
+nav a{color:var(--negro);text-decoration:none;font-weight:500;font-size:16px;}
+nav a:hover{color:var(--verde-oscuro);}
+.btn-contacto{background:var(--verde-oscuro);color:var(--blanco);padding:10px 20px;border-radius:6px;font-size:15px;text-decoration:none;font-weight:600;opacity:0;pointer-events:none;transition:opacity 0.3s;align-self:center;}
+.btn-contacto.show{opacity:1;pointer-events:auto;}
+.hamburger{display:none;font-size:32px;cursor:pointer;align-self:center;}
+.mobile-menu{display:none;flex-direction:column;background:var(--blanco);width:100%;border-bottom:1px solid #e3e3e3;padding:15px 25px;}
+.mobile-menu a{padding:12px 0;text-decoration:none;color: var(--negro);font-size:18px;border-bottom:1px solid #f1f1f1;}
+.section{padding:80px 25px;text-align:center;max-width:900px;margin:auto;}
+.section h1{font-size:34px;margin-bottom:30px;font-weight:700;}
+.accordion{margin-bottom:15px;border-bottom:1px solid #e3e3e3;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:15px 10px;transition:background 0.3s;}
+.accordion:hover{background:#f9f9f9;}
+.accordion h3{font-size:18px;}
+.accordion .arrow{transition:transform 0.3s;font-size:18px;}
+.panel{max-height:0;overflow:hidden;transition:max-height 0.4s ease;padding:0 10px; text-align:left;} /* Aliniere la stânga */
+.panel p{padding:10px 0;font-size:16px;line-height:1.6; text-align:left;} /* Aliniere la stânga */
+footer{background:#f3f3f3;padding:50px 20px;text-align:center;}
+footer p{color:var(--gris-texto);margin-bottom:15px;}
+footer a{color:var(--gris-texto);text-decoration:none;margin:0 12px;font-size:15px;}
+footer a:hover{color:var(--verde-oscuro);}
+.social-icons{margin-top:20px;}
+.social-icons a img{width:32px;margin:0 8px;transition:0.25s;}
+.social-icons a img:hover{transform:scale(1.15);}
+@media(max-width:1020px){nav,.btn-contacto{display:none}.hamburger{display:block}}
+@media(max-width:500px){header img{height:50px}}
+</style>
+<script>
+function toggleMenu(){const menu=document.getElementById("mobileMenu");menu.style.display=menu.style.display==="flex"?"none":"flex";}
+window.addEventListener("scroll",()=>{document.querySelector(".btn-contacto").classList.toggle("show",window.scrollY>50);});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  const accordions = document.querySelectorAll(".accordion");
+  accordions.forEach(acc=>{
+    acc.addEventListener("click",()=>{
+      const panel = acc.nextElementSibling;
+      const arrow = acc.querySelector(".arrow");
+      if(panel.style.maxHeight){
+        panel.style.maxHeight = null;
+        arrow.style.transform = "rotate(0deg)";
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        arrow.style.transform = "rotate(90deg)";
+      }
+    });
+  });
+});
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.svg">
+</head>
+<body>
+<header>
+    <img src="../assets/images/logo.svg" alt="REM Todo Limpio logo">
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../index.html#hogar">Hogar</a>
+        <a href="../index.html#jardin">Jardín</a>
+        <a href="../index.html#galeria">Galería</a>
+        <a href="../index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn-contacto" href="#contacto">Contáctanos</a>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" onclick="toggleMenu()">Inicio</a>
+    <a href="../index.html#hogar" onclick="toggleMenu()">Hogar</a>
+    <a href="../index.html#jardin" onclick="toggleMenu()">Jardín</a>
+    <a href="../index.html#galeria" onclick="toggleMenu()">Galería</a>
+    <a href="../index.html#contacto" onclick="toggleMenu()">Contacto</a>
+</div>
+<section class="section">
+  <h1>Preguntas Frecuentes (FAQ)</h1>
+
+  <div class="accordion">
+    <h3>¿Qué servicios ofrecen?</h3>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="panel">
+    <p>Ofrecemos limpieza și mantenimiento profesional pentru hogares și jardines, incluyendo cristalería, escaleras, césped, poda y sistemas de riego.</p>
+  </div>
+
+  <div class="accordion">
+    <h3>¿Cómo solicito un presupuesto?</h3>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="panel">
+    <p>Puedes hacer clic en el botón "Pedir Presupuesto" en nuestro sitio web y completar el formulario de contacto. Te responderemos con un presupuesto adaptado a tus necesidades.</p>
+  </div>
+
+  <div class="accordion">
+    <h3>¿Trabajan con contratos a largo plazo?</h3>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="panel">
+    <p>Podemos establecer acuerdos de mantenimiento recurrente según lo requiera cada cliente, asegurando consistencia y calidad en nuestros servicios.</p>
+  </div>
+
+  <div class="accordion">
+    <h3>¿Garantizan la calidad de su trabajo?</h3>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="panel">
+    <p>Sí, nos comprometemos a realizar nuestros servicios con profesionalismo y atención a los detalles, garantizando la satisfacción del cliente.</p>
+  </div>
+</section>
+<footer>
+    <p>© REM. All rights reserved.</p>
+    <div>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="terminos.html">Términos</a>
+        <a href="faq.html">FAQ</a>
+    </div>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/remtodolimpio" target="_blank">
+            <img src="assets/images/socials/facebook.png" alt="Facebook">
+        </a>
+
+        <a href="https://wa.me/34662371631" target="_blank">
+            <img src="assets/images/socials/whatsapp.png" alt="WhatsApp">
+        </a>
+
+        <a href="https://www.instagram.com/remtodolimpio" target="_blank">
+            <img src="assets/images/socials/instagram.png" alt="Instagram">
+        </a>
+
+        <a href="https://www.tiktok.com" target="_blank">
+            <img src="assets/images/socials/tiktok.png" alt="TikTok">
+        </a>
+    </div>
+</footer>
+</body>
+</html>
