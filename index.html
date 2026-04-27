@@ -123,6 +123,8 @@ nav a:hover{color:var(--verde-oscuro);}
 @keyframes loopScroll{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
 .gallery-loop img{
     width:280px;
+    height:320px;
+    object-fit:cover;
     border-radius:8px;
     cursor:pointer;
     transition:transform 0.3s, opacity 0.3s;
@@ -203,9 +205,24 @@ footer a:hover{color:var(--verde-oscuro);}
     }
 }
 @media(max-width:500px){header img{height:50px}}
-@media(max-width:600px){.gallery-loop img{width:calc((100vw - 60px)/5);}}
-@media(max-width:450px){.gallery-loop img{width:calc((100vw - 50px)/4);}}
-@media(max-width:350px){.gallery-loop img{width:calc((100vw - 40px)/3);}}
+@media(max-width:600px){
+  .gallery-loop img{
+    width:calc((100vw - 60px)/5);
+    height:200px;
+  }
+}
+@media(max-width:450px){
+  .gallery-loop img{
+    width:calc((100vw - 50px)/4);
+    height:180px;
+  }
+}
+@media(max-width:350px){
+  .gallery-loop img{
+    width:calc((100vw - 40px)/3);
+    height:160px;
+  }
+}
 @keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
 </style>
 
@@ -257,7 +274,9 @@ document.addEventListener('keydown', function(e){
 
 <body>
 <header>
-    <img src="assets/images/logo.svg" alt="REM Todo Limpio logo">
+    <a href="index.html">
+        <img src="assets/images/logo.svg" alt="REM Todo Limpio logo">
+    </a>
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#hogar">Hogar</a>
@@ -278,8 +297,12 @@ document.addEventListener('keydown', function(e){
 </div>
 
 <section class="hero" id="inicio">
-    <video class="bg-video" autoplay muted loop src="assets/videos/bg-video.mp4"></video>
-    <div class="banner-text">R.E.M – Todo Limpio · Limpieza profesional Hogar y Jardín · Contacta ahora</div>
+    <video class="bg-video" autoplay muted loop playsinline preload="auto">
+        <source src="assets/videos/bg-video.mp4" type="video/mp4">
+    </video>
+    <div class="banner-text">
+    R.E.M – Todo Limpio · Hogar y Jardín · Contacta ahora · +34 662 37 16 31 · Síguenos: Facebook · Instagram · TikTok (@remtodolimpio)
+    </div>
     <div class="contenido">
         <h1>R.E.M – Todo Limpio</h1>
         <p>Profesionales en limpieza y mantenimiento de Hogar y Jardín. Garantía de calidad y atención personalizada.</p>
@@ -301,18 +324,25 @@ document.addEventListener('keydown', function(e){
     <h2>Galería</h2>
     <div class="gallery-wrapper">
         <div class="gallery-loop">
-            <img src="assets/images/gallery/photo1.jpg" alt="Trabajo 1" onclick="openModal(0)">
-            <img src="assets/images/gallery/photo2.jpg" alt="Trabajo 2" onclick="openModal(1)">
-            <img src="assets/images/gallery/photo3.jpg" alt="Trabajo 3" onclick="openModal(2)">
-            <img src="assets/images/gallery/photo4.jpg" alt="Trabajo 4" onclick="openModal(3)">
-            <img src="assets/images/gallery/photo5.jpg" alt="Trabajo 5" onclick="openModal(4)">
-            <img src="assets/images/gallery/photo6.jpg" alt="Trabajo 6" onclick="openModal(5)">
-            <img src="assets/images/gallery/photo7.jpg" alt="Trabajo 7" onclick="openModal(6)">
-            <img src="assets/images/gallery/photo8.jpg" alt="Trabajo 8" onclick="openModal(7)">
-            <img src="assets/images/gallery/photo9.jpg" alt="Trabajo 9" onclick="openModal(8)">
+            <img src="assets/images/gallery/photo1.jpg"  alt="Trabajo 1"  onclick="openModal(0)">
+            <img src="assets/images/gallery/photo2.jpg"  alt="Trabajo 2"  onclick="openModal(1)">
+            <img src="assets/images/gallery/photo3.jpg"  alt="Trabajo 3"  onclick="openModal(2)">
+            <img src="assets/images/gallery/photo4.jpg"  alt="Trabajo 4"  onclick="openModal(3)">
+            <img src="assets/images/gallery/photo5.jpg"  alt="Trabajo 5"  onclick="openModal(4)">
+            <img src="assets/images/gallery/photo6.jpg"  alt="Trabajo 6"  onclick="openModal(5)">
+            <img src="assets/images/gallery/photo7.jpg"  alt="Trabajo 7"  onclick="openModal(6)">
+            <img src="assets/images/gallery/photo8.jpg"  alt="Trabajo 8"  onclick="openModal(7)">
+            <img src="assets/images/gallery/photo9.jpg"  alt="Trabajo 9"  onclick="openModal(8)">
             <img src="assets/images/gallery/photo10.jpg" alt="Trabajo 10" onclick="openModal(9)">
             <img src="assets/images/gallery/photo11.jpg" alt="Trabajo 11" onclick="openModal(10)">
             <img src="assets/images/gallery/photo12.jpg" alt="Trabajo 12" onclick="openModal(11)">
+            <img src="assets/images/gallery/photo13.jpg" alt="Trabajo 13" onclick="openModal(12)">
+            <img src="assets/images/gallery/photo14.jpg" alt="Trabajo 14" onclick="openModal(13)">
+            <img src="assets/images/gallery/photo15.jpg" alt="Trabajo 15" onclick="openModal(14)">
+            <img src="assets/images/gallery/photo16.jpg" alt="Trabajo 16" onclick="openModal(15)">
+            <img src="assets/images/gallery/photo17.jpg" alt="Trabajo 17" onclick="openModal(16)">
+            <img src="assets/images/gallery/photo18.jpg" alt="Trabajo 18" onclick="openModal(17)">
+            <img src="assets/images/gallery/photo19.jpg" alt="Trabajo 19" onclick="openModal(18)">
         </div>
     </div>
 </section>
@@ -326,6 +356,9 @@ document.addEventListener('keydown', function(e){
 
 <section class="section" id="contacto">
     <h2>Contacto</h2>
+    <p style="font-size:18px; margin-bottom:25px;">
+        Teléfono: <a href="tel:+34662371631" style="color:#1F6B2E; font-weight:600;">+34 662 37 16 31</a> — Miti
+    </p>
     <form action="https://formspree.io/f/xwvwzkpz" method="POST" style="max-width:500px;margin:auto;">
         <input type="text" name="nombre" placeholder="Nombre" required style="width:100%;padding:10px;margin:10px 0;">
         <input type="email" name="email" placeholder="Email" required style="width:100%;padding:10px;margin:10px 0;">
@@ -335,30 +368,52 @@ document.addEventListener('keydown', function(e){
     </form>
 </section>
 
-<footer>
-    <p>© REM. All rights reserved.</p>
-    <div>
-        <a href="pages/privacidad.html">Privacidad</a>
-        <a href="pages/terminos.html">Términos</a>
-        <a href="pages/faq.html">FAQ</a>
+<footer style="padding:50px 20px; background:#f3f3f3; text-align:center;">
+
+    <p style="font-weight:600; margin-bottom:15px;">
+        © REM. All rights reserved.
+    </p>
+
+    <div style="margin-bottom:15px; line-height:1.8;">
+        <p>
+            📞 <a href="tel:+34662371631" style="color:inherit; text-decoration:none; font-weight:600;">
+                +34 662 37 16 31
+            </a> – MITI
+        </p>
+
+        <p>
+            📍 <a href="https://maps.google.com/?q=San+Raimundo+Hiribidea+7+01300+Laguardia+Araba+España"
+               target="_blank" rel="noopener"
+               style="color:inherit; text-decoration:none;">
+                San Raimundo Hiribidea, 7, 01300 Laguardia, Araba, España
+            </a>
+        </p>
     </div>
+
+    <div style="margin-bottom:20px;">
+        <a href="pages/privacidad.html" style="margin:0 10px; color:#6A6A6A; text-decoration:none;">Privacidad</a>
+        <a href="pages/terminos.html" style="margin:0 10px; color:#6A6A6A; text-decoration:none;">Términos</a>
+        <a href="pages/faq.html" style="margin:0 10px; color:#6A6A6A; text-decoration:none;">FAQ</a>
+    </div>
+
     <div class="social-icons">
-        <a href="https://www.facebook.com/remtodolimpio" target="_blank">
+        <a href="https://www.facebook.com/remtodolimpio" target="_blank" rel="noopener">
             <img src="assets/images/socials/facebook.png" alt="Facebook">
         </a>
 
-        <a href="https://wa.me/34662371631" target="_blank">
+        <a href="https://wa.me/34662371631" target="_blank" rel="noopener">
             <img src="assets/images/socials/whatsapp.png" alt="WhatsApp">
         </a>
 
-        <a href="https://www.instagram.com/remtodolimpio" target="_blank">
+        <a href="https://www.instagram.com/remtodolimpio" target="_blank" rel="noopener">
             <img src="assets/images/socials/instagram.png" alt="Instagram">
         </a>
 
-        <a href="https://www.tiktok.com" target="_blank">
+        <a href="https://www.tiktok.com/@remtodolimpio" target="_blank" rel="noopener">
             <img src="assets/images/socials/tiktok.png" alt="TikTok">
         </a>
     </div>
+
 </footer>
 
 <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>

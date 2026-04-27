@@ -3,98 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidad – REM Todo Limpio</title>
+<title>Privacidad – REM Todo Limpio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --verde-oscuro:#1F6B2E;
-  --verde-medio:#2E8E3E;
   --gris-texto:#6A6A6A;
   --blanco:#FFFFFF;
   --negro:#000000;
   --fuente:'Inter', sans-serif;
 }
+
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:var(--fuente);background:var(--blanco);color:var(--negro);}
-header{width:100%;padding:15px 30px;background:var(--blanco);border-bottom:1px solid #e3e3e3;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:999;transition:all 0.3s;height:80px;}
-header img{height:70px;width:auto;}
-nav{display:flex;gap:25px;align-items:center;}
-nav a{color:var(--negro);text-decoration:none;font-weight:500;font-size:16px;}
+body{font-family:var(--fuente);background:var(--blanco);color:var(--negro);overflow-x:hidden;}
+
+/* HEADER */
+header{
+  width:100%;
+  padding:15px 30px;
+  background:var(--blanco);
+  border-bottom:1px solid #e3e3e3;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:999;
+  height:80px;
+}
+
+header img{height:70px;}
+
+nav{display:flex;gap:25px;}
+nav a{text-decoration:none;color:black;font-weight:500;}
 nav a:hover{color:var(--verde-oscuro);}
-.btn-contacto{background:var(--verde-oscuro);color:var(--blanco);padding:10px 20px;border-radius:6px;font-size:15px;text-decoration:none;font-weight:600;opacity:0;pointer-events:none;transition:opacity 0.3s;align-self:center;}
+
+.btn-contacto{
+  background:var(--verde-oscuro);
+  color:#fff;
+  padding:10px 20px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s;
+}
 .btn-contacto.show{opacity:1;pointer-events:auto;}
-.hamburger{display:none;font-size:32px;cursor:pointer;align-self:center;}
-.mobile-menu{display:none;flex-direction:column;background:var(--blanco);width:100%;border-bottom:1px solid #e3e3e3;padding:15px 25px;}
-.mobile-menu a{padding:12px 0;text-decoration:none;color: var(--negro);font-size:18px;border-bottom:1px solid #f1f1f1;}
-.section{padding:80px 25px;text-align:center;max-width:900px;margin:auto;}
-.section h1{font-size:34px;margin-bottom:20px;font-weight:700;}
-.section p{font-size:18px;line-height:1.6;margin-bottom:15px;}
-footer{background:#f3f3f3;padding:50px 20px;text-align:center;}
-footer p{color:var(--gris-texto);margin-bottom:15px;}
-footer a{color:var(--gris-texto);text-decoration:none;margin:0 12px;font-size:15px;}
+
+.hamburger{display:none;font-size:32px;cursor:pointer;}
+
+/* SECTION */
+.section{
+  max-width:900px;
+  margin:auto;
+  padding:80px 20px;
+  text-align:left;
+}
+.section h1{
+  font-size:34px;
+  margin-bottom:20px;
+}
+.section p{
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+/* FOOTER */
+footer{
+  background:#f3f3f3;
+  text-align:center;
+  padding:50px 20px;
+}
+
+footer p{
+  color:var(--gris-texto);
+  margin-bottom:10px;
+}
+
+footer a{
+  color:var(--gris-texto);
+  text-decoration:none;
+  margin:0 10px;
+}
+
 footer a:hover{color:var(--verde-oscuro);}
-.social-icons{margin-top:20px;}
-.social-icons a img{width:32px;margin:0 8px;transition:0.25s;}
-.social-icons a img:hover{transform:scale(1.15);}
-@media(max-width:1020px){nav,.btn-contacto{display:none}.hamburger{display:block}}
-@media(max-width:500px){header img{height:50px}}
+
+.social-icons img{
+  width:32px;
+  margin:0 6px;
+  transition:0.25s;
+}
+.social-icons img:hover{transform:scale(1.15);}
+
+/* RESPONSIVE */
+@media(max-width:1020px){
+  nav,.btn-contacto{display:none;}
+  .hamburger{display:block;}
+}
+@media(max-width:500px){
+  header img{height:50px;}
+}
 </style>
+
 <script>
-function toggleMenu(){const menu=document.getElementById("mobileMenu");menu.style.display=menu.style.display==="flex"?"none":"flex";}
-window.addEventListener("scroll",()=>{document.querySelector(".btn-contacto").classList.toggle("show",window.scrollY>50);});
+function toggleMenu(){
+  const menu=document.getElementById("mobileMenu");
+  menu.style.display=menu.style.display==="flex"?"none":"flex";
+}
+
+window.addEventListener("scroll",()=>{
+  const btn=document.querySelector(".btn-contacto");
+  if(btn) btn.classList.toggle("show",window.scrollY>50);
+});
 </script>
+
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.svg">
 </head>
+
 <body>
+
 <header>
+  <a href="../index.html">
     <img src="../assets/images/logo.svg" alt="REM Todo Limpio logo">
-    <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../index.html#hogar">Hogar</a>
-        <a href="../index.html#jardin">Jardín</a>
-        <a href="../index.html#galeria">Galería</a>
-        <a href="../index.html#contacto">Contacto</a>
-    </nav>
-    <a class="btn-contacto" href="#contacto">Contáctanos</a>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </a>
+
+  <nav>
+    <a href="../index.html">Inicio</a>
+    <a href="../index.html#hogar">Hogar</a>
+    <a href="../index.html#jardin">Jardín</a>
+    <a href="../index.html#galeria">Galería</a>
+    <a href="../index.html#contacto">Contacto</a>
+  </nav>
+
+  <a class="btn-contacto" href="../index.html#contacto">Contáctanos</a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
-<div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html" onclick="toggleMenu()">Inicio</a>
-    <a href="../index.html#hogar" onclick="toggleMenu()">Hogar</a>
-    <a href="../index.html#jardin" onclick="toggleMenu()">Jardín</a>
-    <a href="../index.html#galeria" onclick="toggleMenu()">Galería</a>
-    <a href="../index.html#contacto" onclick="toggleMenu()">Contacto</a>
-</div>
+
 <section class="section">
-    <h1>Política de Privacidad</h1>
-    <p>En <strong>REM Todo Limpio</strong>, valoramos la privacidad de nuestros clientes y visitantes. La información que recopilamos se utiliza únicamente para ofrecer nuestros servicios y mejorar la comunicación con usted.</p>
-    <p>No compartimos sus datos personales con terceros y mantenemos medidas de seguridad para proteger toda la información que recibimos.</p>
-    <p>Al utilizar nuestro sitio web o contratar nuestros servicios, usted acepta esta política de privacidad.</p>
+  <h1>Política de Privacidad</h1>
+
+  <p>
+    En <strong>REM Todo Limpio</strong>, la información de nuestros clientes se utiliza únicamente para la prestación del servicio.
+  </p>
+
+  <p>
+    No compartimos datos personales con terceros y aplicamos medidas razonables de seguridad para su protección.
+  </p>
+
+  <p>
+    El uso de este sitio implica la aceptación de esta política.
+  </p>
 </section>
-<footer>
-    <p>© REM. All rights reserved.</p>
-    <div>
-        <a href="privacidad.html">Privacidad</a>
-        <a href="terminos.html">Términos</a>
-        <a href="faq.html">FAQ</a>
-    </div>
-    <div class="social-icons">
-        <a href="https://www.facebook.com/remtodolimpio" target="_blank">
-            <img src="assets/images/socials/facebook.png" alt="Facebook">
-        </a>
 
-        <a href="https://wa.me/34662371631" target="_blank">
-            <img src="assets/images/socials/whatsapp.png" alt="WhatsApp">
-        </a>
+<footer style="padding:50px 20px; background:#f3f3f3; text-align:center;">
 
-        <a href="https://www.instagram.com/remtodolimpio" target="_blank">
-            <img src="assets/images/socials/instagram.png" alt="Instagram">
-        </a>
+  <p style="font-weight:600; margin-bottom:15px;">
+    © REM. All rights reserved.
+  </p>
 
-        <a href="https://www.tiktok.com" target="_blank">
-            <img src="assets/images/socials/tiktok.png" alt="TikTok">
-        </a>
-    </div>
+  <div style="margin-bottom:15px; line-height:1.8; color:#6A6A6A;">
+
+    <p>
+      📞 <a href="tel:+34662371631" style="color:inherit; text-decoration:none; font-weight:600;">
+        +34 662 37 16 31
+      </a> – MITI
+    </p>
+
+    <p>
+      📍 <a href="https://maps.google.com/?q=San+Raimundo+Hiribidea+7+01300+Laguardia+Araba+España"
+         target="_blank" rel="noopener"
+         style="color:inherit; text-decoration:none;">
+        San Raimundo Hiribidea, 7, 01300 Laguardia, Araba, España
+      </a>
+    </p>
+
+  </div>
+
+  <div style="margin-bottom:20px;">
+    <a href="privacidad.html" style="margin:0 10px; color:#6A6A6A; text-decoration:none;">Privacidad</a>
+    <a href="terminos.html" style="margin:0 10px; color:#6A6A6A; text-decoration:none;">Términos</a>
+    <a href="faq.html" style="margin:0 10px; color:#6A6A6A; text-decoration:none;">FAQ</a>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://www.facebook.com/remtodolimpio" target="_blank" rel="noopener">
+      <img src="../assets/images/socials/facebook.png" alt="Facebook">
+    </a>
+
+    <a href="https://wa.me/34662371631" target="_blank" rel="noopener">
+      <img src="../assets/images/socials/whatsapp.png" alt="WhatsApp">
+    </a>
+
+    <a href="https://www.instagram.com/remtodolimpio" target="_blank" rel="noopener">
+      <img src="../assets/images/socials/instagram.png" alt="Instagram">
+    </a>
+
+    <a href="https://www.tiktok.com/@remtodolimpio" target="_blank" rel="noopener">
+      <img src="../assets/images/socials/tiktok.png" alt="TikTok">
+    </a>
+  </div>
+
 </footer>
+
 </body>
 </html>
